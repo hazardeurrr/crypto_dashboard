@@ -273,6 +273,7 @@ export default function Investors(props) {
       },
     },
   ];
+  
 
   function calculatePoint(i, intervalSize, colorRangeInfo) {
     var { colorStart, colorEnd, useEndAsStart } = colorRangeInfo;
