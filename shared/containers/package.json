@@ -1,0 +1,10 @@
+{
+  "name": "@iso/containers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "d3-scale-chromatic": "^3.0.0",
+    "nomics": "^0.5.7"
+  }
+}
