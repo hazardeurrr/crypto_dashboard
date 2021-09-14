@@ -159,7 +159,7 @@ export default function Articles() {
     });
   });
 
-  
+
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {},
   };
