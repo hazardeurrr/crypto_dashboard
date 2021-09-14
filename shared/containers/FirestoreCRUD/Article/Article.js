@@ -159,11 +159,12 @@ export default function Articles() {
     });
   });
 
-  
+
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {},
   };
+  
 
   const showStatus = (row) => {
     if(row.status == "publish"){
