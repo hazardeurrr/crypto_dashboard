@@ -54,8 +54,15 @@ const publicRoutes = [
     ),
   },
 ];
+
+
 function PrivateRoute({ children, ...rest }) {
   const isLoggedIn = useSelector(state => state.Auth.idToken);
+  // let search = window.location.search;
+  // let params = new URLSearchParams(search);
+  // let foo = params.get('query');
+
+  // const isLoggedIn = foo === 'connected';
 
   return (
     <Route
@@ -87,7 +94,7 @@ export default function Routes() {
                 <route.component />
               </Route>
             ))}
-            <PrivateRoute path="/dashboard">
+            <PrivateRoute path="/dashboard" >
               <Dashboard />
             </PrivateRoute>
           </Switch>

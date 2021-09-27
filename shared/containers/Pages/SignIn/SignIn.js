@@ -14,6 +14,7 @@ import {
   signInWithFacebook,
 } from '@iso/lib/firebase/firebase.authentication.util';
 import SignInStyleWrapper from './SignIn.styles';
+import secretKey from './secretKey';
 
 const { login } = authAction;
 const { clearMenu } = appAction;
@@ -31,17 +32,32 @@ export default function SignIn() {
     }
   }, [isLoggedIn]);
 
+
+ 
+
+
   function handleLogin(e, token = false) {
-    e.preventDefault();
-    if (token) {
-      dispatch(login(token));
+    if(e != null) e.preventDefault();    
+
+    if(foo === secretKey){
+      if (token) {
+        dispatch(login(token));
+      } else {
+        dispatch(login());
+      }
+      dispatch(clearMenu());
+      history.push('/dashboard');
     } else {
-      dispatch(login());
+      console.log("ACCESS DENIED")
     }
-    dispatch(clearMenu());
-    history.push('/dashboard');
   }
   let { from } = location.state || { from: { pathname: '/dashboard' } };
+
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  let foo = params.get('query');
+
+  handleLogin()
 
   if (redirectToReferrer) {
     return <Redirect to={from} />;
@@ -51,42 +67,25 @@ export default function SignIn() {
       <div className="isoLoginContentWrapper">
         <div className="isoLoginContent">
           <div className="isoLogoWrapper">
-            <Link to="/dashboard">
-              <IntlMessages id="page.signInTitle" />
-            </Link>
+            DASHBOARD CRYPTO BY CRYPTANALYST
           </div>
           <div className="isoSignInForm">
             <form>
-              <div className="isoInputWrapper">
-                <Input
-                  size="large"
-                  placeholder="Username"
-                  autoComplete="true"
-                />
-              </div>
-
-              <div className="isoInputWrapper">
-                <Input
-                  size="large"
-                  type="password"
-                  placeholder="Password"
-                  autoComplete="false"
-                />
-              </div>
+             
 
               <div className="isoInputWrapper isoLeftRightComponent">
-                <Checkbox>
-                  <IntlMessages id="page.signInRememberMe" />
-                </Checkbox>
-                <Button type="primary" onClick={handleLogin}>
-                  <IntlMessages id="page.signInButton" />
+               
+                <Button type="primary" onClick={event =>  window.location.href='https://academy.cryptanalyst.fr/'}>
+                  Débloquez l'accès sur academy.cryptanalyst.fr
                 </Button>
               </div>
 
-              <p className="isoHelperText">
-                <IntlMessages id="page.signInPreview" />
-              </p>
+              {/* <p className="isoHelperText">
+              </p> */}
             </form>
+
+            </div>
+            {/* 
             <div className="isoInputWrapper isoOtherLogin">
               <Button
                 onClick={signInWithFacebook}
@@ -126,7 +125,7 @@ export default function SignIn() {
                 <IntlMessages id="page.signInCreateAccount" />
               </Link>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </SignInStyleWrapper>
