@@ -1,6 +1,6 @@
 # crypto_dashboard
 
-Project on "main" branch
+Project on "master" branch
 
 
 Project to create a dashboard for traders to monitor their trades and wallet.
